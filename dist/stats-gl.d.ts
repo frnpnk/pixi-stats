@@ -1,5 +1,5 @@
 import BaseHooks from '@jacekpietal/gstats/dist/BaseHooks';
-import { Application } from 'pixi.js';
+import { Renderer } from 'pixi.js';
 import { Panel } from './stats-panel';
 import { Stats } from './stats';
 export declare class StatsJSAdapter {
@@ -12,6 +12,6 @@ export declare class StatsJSAdapter {
     reset(): void;
 }
 export declare class PIXIHooks extends BaseHooks {
-    constructor(app: Application);
+    constructor(renderer: Renderer);
 }
 //# sourceMappingURL=stats-gl.d.ts.map

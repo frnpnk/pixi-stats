@@ -1,4 +1,4 @@
-import type { Application } from 'pixi.js';
+import { Renderer } from 'pixi.js';
 import { PIXIHooks, StatsJSAdapter } from './stats-gl';
 import { Panel } from './stats-panel';
 
@@ -90,9 +90,9 @@ export class Stats {
   }
 }
 
-export function addStats(document: Document, app: Application): StatsJSAdapter {
+export function addStats(document: Document, renderer: Renderer): StatsJSAdapter {
   const stats: Stats = new Stats();
-  const pixiHooks: PIXIHooks = new PIXIHooks(app);
+  const pixiHooks: PIXIHooks = new PIXIHooks(renderer);
   const adapter: StatsJSAdapter = new StatsJSAdapter(pixiHooks, stats);
 
   document.body.appendChild(adapter.stats!.domElement);

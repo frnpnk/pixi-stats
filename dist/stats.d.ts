@@ -1,4 +1,4 @@
-import type { Application } from 'pixi.js';
+import { Renderer } from 'pixi.js';
 import { StatsJSAdapter } from './stats-gl';
 import { Panel } from './stats-panel';
 export declare class Stats {
@@ -19,5 +19,5 @@ export declare class Stats {
     end(): number;
     update(): void;
 }
-export declare function addStats(document: Document, app: Application): StatsJSAdapter;
+export declare function addStats(document: Document, renderer: Renderer): StatsJSAdapter;
 //# sourceMappingURL=stats.d.ts.map

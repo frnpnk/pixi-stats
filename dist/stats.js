@@ -57,9 +57,9 @@ class Stats {
 }
 exports.Stats = Stats;
 Stats.Panel = stats_panel_1.Panel;
-function addStats(document, app) {
+function addStats(document, renderer) {
     const stats = new Stats();
-    const pixiHooks = new stats_gl_1.PIXIHooks(app);
+    const pixiHooks = new stats_gl_1.PIXIHooks(renderer);
     const adapter = new stats_gl_1.StatsJSAdapter(pixiHooks, stats);
     document.body.appendChild(adapter.stats.domElement);
     return adapter;

@@ -26,16 +26,29 @@ This class provides an info box that will help you monitor your code performance
 npm install pixi-stats --save
 ```
 
+
+
 ### Usage ###
 ```typescript
 import { Application, Ticker, UPDATE_PRIORITY } from 'pixi.js';
 import { addStats, Stats } from 'pixi-stats';
 
-const app: Application = new Application({});
-const stats: Stats = addStats(document, app);
-const ticker: Ticker = Ticker.shared;
+pixiStats() {
+    const renderer: Renderer = this.renderer;
+    //@ts-ignore
+    const stats: Stats = addStats(document, renderer);
+    const ticker = gsap.ticker;
 
-ticker.add(stats.update, stats, UPDATE_PRIORITY.UTILITY);
+    ticker.add(() => {
+      stats.update();
+    });
+  }
+
+  public async init() {
+    if (this.isDebug) {
+      this.pixiStats();
+    }}
+
 ```
 
 ```css

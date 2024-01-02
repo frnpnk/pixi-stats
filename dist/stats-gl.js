@@ -40,13 +40,13 @@ class StatsJSAdapter {
 }
 exports.StatsJSAdapter = StatsJSAdapter;
 class PIXIHooks extends BaseHooks_1.default {
-    constructor(app) {
+    constructor(renderer) {
         super();
-        if (!app) {
+        if (!renderer) {
             console.error('[PIXI Hooks] missing PIXI.Application');
             return;
         }
-        const renderer = app.renderer;
+        //const renderer = app.renderer as Renderer;
         if (renderer.gl) {
             this.attach(renderer.gl);
             const startTextures = renderer.texture.managedTextures;
@@ -59,7 +59,7 @@ class PIXIHooks extends BaseHooks_1.default {
                     const txr = startTextures[i];
                     const gltextures = txr._glTextures;
                     Object.values(gltextures).forEach((glTexture) => {
-                        if (glTexture.gl === app.renderer.gl) {
+                        if (glTexture.gl === renderer.gl) {
                             this.texturehook.registerTexture(glTexture.texture);
                         }
                     });
